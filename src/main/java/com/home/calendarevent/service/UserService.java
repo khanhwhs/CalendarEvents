@@ -1,6 +1,7 @@
 package com.home.calendarevent.service;
 
 import com.home.calendarevent.entities.UserEntity;
+import com.home.calendarevent.model.Event;
 import com.home.calendarevent.model.User;
 import com.home.calendarevent.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class UserService {
         return userEntityList.stream().map(userEntity -> new User(userEntity.getUserId(), userEntity.getFirstName(), userEntity.getLastName())
                 ).collect(Collectors.toList());
 
+    }
+
+    public List<Event> GetEventsForUser(String User){ // TO DO
+        return null;
     }
 }

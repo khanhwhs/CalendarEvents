@@ -9,6 +9,13 @@ public class Reminder {
     private Timestamp reminderTime;
     private boolean reminderFlag;
 
+    public Reminder(int reminderId, String reminderMessage, Timestamp reminderTime, boolean reminderFlag) {
+        this.reminderId = reminderId;
+        this.reminderMessage = reminderMessage;
+        this.reminderTime = reminderTime;
+        this.reminderFlag = reminderFlag;
+    }
+
     public int getReminderId() {
         return reminderId;
     }

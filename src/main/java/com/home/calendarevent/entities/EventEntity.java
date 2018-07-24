@@ -16,6 +16,7 @@ public class EventEntity {
     private Timestamp lastUpdateTs;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EVENT_ID")
     public int getEventId() {
         return eventId;

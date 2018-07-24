@@ -11,6 +11,7 @@ public class ReminderEntity {
     private String reminderMessage;
     private Timestamp reminderTs;
     private Integer eventId;
+    private String reminderFlag;
 
     @Id
     @Column(name = "REMINDER_ID")
@@ -52,6 +53,16 @@ public class ReminderEntity {
         this.eventId = eventId;
     }
 
+    @Basic
+    @Column(name = "REMINDER_FLAG")
+    public String getReminderFlag() {
+        return reminderFlag;
+    }
+
+    public void setReminderFlag(String reminderFlag) {
+        this.reminderFlag = reminderFlag;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,12 +71,13 @@ public class ReminderEntity {
         return reminderId == that.reminderId &&
                 Objects.equals(reminderMessage, that.reminderMessage) &&
                 Objects.equals(reminderTs, that.reminderTs) &&
-                Objects.equals(eventId, that.eventId);
+                Objects.equals(eventId, that.eventId) &&
+                Objects.equals(reminderFlag, that.reminderFlag);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(reminderId, reminderMessage, reminderTs, eventId);
+        return Objects.hash(reminderId, reminderMessage, reminderTs, eventId, reminderFlag);
     }
 }

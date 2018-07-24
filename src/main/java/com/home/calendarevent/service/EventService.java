@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -19,14 +20,30 @@ public class EventService {
 
     public List<Event> findAll(){
         List<EventEntity> eventEntityList = eventRepository.findAll();
-        List<Event> eventList = new ArrayList<>();
-        for(EventEntity event: eventEntityList){
-            eventList.add(new Event(event.getEventId(), event.getEventTitle(),
-                    event.getEventLoc(),event.getEventDate(),null));
+        return eventEntityList.stream().map(event -> new Event(event.getEventId(), event.getEventTitle(),
+                event.getEventLoc(),event.getEventDate(),null)
+        ).collect(Collectors.toList());
+    }
 
-        }
+    public List<Event> findByMonth(int month){
+        List<EventEntity> eventEntityList = eventRepository.getByMonth(month);
+        return eventEntityList.stream().map(event -> new Event(event.getEventId(), event.getEventTitle(),
+                event.getEventLoc(),event.getEventDate(),null)
+        ).collect(Collectors.toList());
+    }
 
-        return eventList;
+    public List<Event> findByDay(int day){
+        List<EventEntity> eventEntityList = eventRepository.getByYear(day);
+        return eventEntityList.stream().map(event -> new Event(event.getEventId(), event.getEventTitle(),
+                event.getEventLoc(),event.getEventDate(),null)
+        ).collect(Collectors.toList());
+    }
+
+    public List<Event> findByYear(int year){
+        List<EventEntity> eventEntityList = eventRepository.getByYear(year);
+        return eventEntityList.stream().map(event -> new Event(event.getEventId(), event.getEventTitle(),
+                event.getEventLoc(),event.getEventDate(),null)
+        ).collect(Collectors.toList());
     }
 
     public void addEvent(String eventTitle, String eventLocation, String eventDate) throws ParseException {
@@ -40,5 +57,9 @@ public class EventService {
         eventRepository.save(entity);
 
     }
+
+    public List<Event> findByUser(int userId){
+        return null;
+    } // TO DO
 }
 

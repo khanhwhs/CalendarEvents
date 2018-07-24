@@ -14,6 +14,7 @@ public class UserEntity {
     private Timestamp lastUpdateDate;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
     public Integer getUserId() {
         return userId;
