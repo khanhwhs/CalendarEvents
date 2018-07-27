@@ -10,6 +10,6 @@ Follow these steps to get the app up and running on local:
 
 #Reminders
 
-- Enter date in this format "dd-MM-yyyy"
+- Enter date input in this format "dd-MM-yyyy"
 
 
